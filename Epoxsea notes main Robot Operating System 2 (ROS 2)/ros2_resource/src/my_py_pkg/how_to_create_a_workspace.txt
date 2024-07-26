@@ -1,0 +1,18 @@
+mkdir workspace
+get into workspace
+mkdir src
+colcon build
+cd install
+source local_setup.bash
+
+open new terminal 
+cd
+gedit .bashrc
+source~/workspace/install/setup.bash
+
+cd workspace/src/
+ros2 pkg create package --build-type ament_python --dependencies rclpy
+ros2 pkg create my_cpp_pkg --build-type ament_cmake --dependencies rclcpp
+
+colcon build --packages-select my_py_pkg --symlink-install (everytime when a new node is created, need this command)
+
